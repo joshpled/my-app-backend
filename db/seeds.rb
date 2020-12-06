@@ -1,5 +1,5 @@
-Post.destroy_all
+Monster.destroy_all
 
 10.times{
-Post.create(title: Faker::Lorem.sentence, content: Faker::Lorem.sentence)
+    Monster.create(name: Faker::Games::Pokemon.name, health: Faker::Number.within(range: 1..10))
 }
