@@ -10,6 +10,7 @@ class Api::V1::PetsController < ApplicationController
 
   # GET /pets/1
   def show
+    pet = Pet.find_by_id(params[:id])
     render json: pet
   end
 
@@ -27,7 +28,7 @@ class Api::V1::PetsController < ApplicationController
 
   # PATCH/PUT /pets/1
   def update
-    
+    byebug
     if pet.update(pet_params)
       render json: pet
     else
