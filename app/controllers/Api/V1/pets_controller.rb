@@ -15,6 +15,7 @@ class Api::V1::PetsController < ApplicationController
 
   # POST /pets
   def create
+    # byebug
     pet = Pet.new(pet_params)
   
     if pet.save
@@ -26,6 +27,7 @@ class Api::V1::PetsController < ApplicationController
 
   # PATCH/PUT /pets/1
   def update
+    
     if pet.update(pet_params)
       render json: pet
     else
