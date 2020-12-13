@@ -28,7 +28,6 @@ class Api::V1::PetsController < ApplicationController
 
   # PATCH/PUT /pets/1
   def update
-    byebug
     if pet.update(pet_params)
       render json: pet
     else
