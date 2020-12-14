@@ -1,10 +1,8 @@
 class Api::V1::PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :update, :destroy]
 
   # GET /pets
   def index
     pets = Pet.all
-
     render json: pets
   end
 
@@ -28,6 +26,8 @@ class Api::V1::PetsController < ApplicationController
 
   # PATCH/PUT /pets/1
   def update
+    # byebug
+    pet = Pet.find_by_id(params[:id])
     if pet.update(pet_params)
       render json: pet
     else
@@ -41,11 +41,7 @@ class Api::V1::PetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pet
-      pet = Pet.find(params[:id])
-    end
-
+  
     # Only allow a trusted parameter "white list" through.
     def pet_params
       params.require(:pet).permit(:name, :health, :boredom, :hunger)
