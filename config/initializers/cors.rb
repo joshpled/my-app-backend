@@ -6,13 +6,6 @@
 # Read more: https://github.com/cyu/rack-cors
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins '*.herokuapp.com'
-
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
 
   allow do
     origins 'localhost:3000'
@@ -31,7 +24,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'fathomless-woodland-23318.herokuapp.com'
+    origins 'tamapuri2.herokuapp.com'
 
     resource '*',
       headers: :any,
