@@ -1,3 +1,4 @@
 class Item < ApplicationRecord
-    belongs_to :pet
+    has_many :assignments
+    has_many :pets, through: :assignments
 end

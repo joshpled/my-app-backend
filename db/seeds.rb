@@ -1,4 +1,8 @@
-10.times{
-    Pet.create(name: Faker::Games::Pokemon.name, health: 100, boredom: 100, hunger: 100)
-}
-
+Item.create(name: 'tacos', value: 10, category: 'food', price: 3)
+Item.create(name: 'burrito', value: 20, category: 'food', price: 4)
+Item.create(name: 'fish', value: 30, category: 'food', price: 30)
+Item.create(name: 'friedChicken', value: 50, category: 'food', price: 30)
+Item.create(name: 'fruit', value: 5, category: 'food', price: 2)
+Item.create(name: 'pizza', value: 15, category: 'food', price: 4)
+Item.create(name: 'sandwich', value: 15, category: 'food', price: 15)
+Item.create(name: 'vegetables', value: 5, category: 'food', price: 2)

@@ -1,3 +1,4 @@
 class Pet < ApplicationRecord
-    has_many :items
+  has_many :assignments
+  has_many :items, through: :assignments
 end
