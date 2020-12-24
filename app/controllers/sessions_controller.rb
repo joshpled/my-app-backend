@@ -23,11 +23,11 @@ class SessionsController < ApplicationController
         logged_in: true, 
         user: @current_user
       }
-    end
   else 
     render json: {
       logged_in: false
     }
+  end 
   end
 
   def logout
