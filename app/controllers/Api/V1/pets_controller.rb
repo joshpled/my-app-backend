@@ -16,7 +16,6 @@ class Api::V1::PetsController < ApplicationController
   def create
     # byebug
     pet = Pet.new(pet_params)
-  
     if pet.save
       render json: pet
     else
@@ -44,6 +43,6 @@ class Api::V1::PetsController < ApplicationController
   
     # Only allow a trusted parameter "white list" through.
     def pet_params
-      params.require(:pet).permit(:name, :health, :boredom, :hunger)
+      params.require(:pet).permit(:name, :health, :boredom, :hunger, :user_id)
     end
 end
