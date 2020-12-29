@@ -6,12 +6,10 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params["user"]["email"]).try(:authenticate, params["user"]["password"])
     if user
       session[:user_id] = user.id
-      render :json => user.to_json(:include => :pets)
-      # render json: {
-      #          status: :created,
-      #          logged_in: true,
-      #          user: user,
-      #        }
+      user = user.as_json(:include => :pets)
+      user.merge!(status: :created)
+      user.merge!(logged_in: true)
+      render :json => user
     else
       render json: { status: 401 }
     end
@@ -20,11 +18,9 @@ class SessionsController < ApplicationController
   def logged_in
     # byebug
     if @current_user
-      render :json => @current_user.to_json(:include => :pets)
-      # render json: {
-      #   logged_in: true,
-      #   user: @current_user,
-      # }
+      user = @current_user.as_json(:include => :pets)
+      user.merge!(logged_in: true)
+      render :json => user
     else
       render json: {
                logged_in: false,
