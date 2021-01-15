@@ -9,11 +9,10 @@ class RegistrationsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      render json: {
-               status: :created,
-               logged_in: true,
-               user: user,
-             }
+      user = user.as_json(:include => :pets)
+      user.merge!(status: :created)
+      user.merge!(logged_in: true)
+      render :json => user
     else
       render json: { status: 500 }
     end
