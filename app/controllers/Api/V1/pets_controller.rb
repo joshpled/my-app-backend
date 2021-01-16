@@ -36,13 +36,19 @@ class Api::V1::PetsController < ApplicationController
 
   # DELETE /pets/1
   def destroy
-    pet.destroy
+    pet = Pet.find_by_id(params[:id])
+    if pet
+      pet.destroy
+      render json: { status: 200 }
+    else
+      render json: { status: 500 }
+    end
   end
 
   private
-  
-    # Only allow a trusted parameter "white list" through.
-    def pet_params
-      params.require(:pet).permit(:name, :health, :boredom, :hunger, :user_id, item_ids:[])
-    end
+
+  # Only allow a trusted parameter "white list" through.
+  def pet_params
+    params.require(:pet).permit(:name, :health, :boredom, :hunger, :user_id, item_ids: [])
+  end
 end

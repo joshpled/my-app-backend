@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
   end
 
   def logged_in
-    # byebug
     if @current_user
       user = @current_user.as_json(:include => :pets)
       user.merge!(logged_in: true)
